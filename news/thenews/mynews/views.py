@@ -10,14 +10,10 @@ from django.http import HttpResponseRedirect
 
 
 def LikeView(request, pk):
-      post  = get_object_or_404(Post, id = request.POST.get('post_id'))
+      post = get_object_or_404(Post, id=request.POST.get('post_id'))
       post.likes.add(request.user)
-      return HttpResponseRedirect(reverse('article_detail', args=[str(pk)]))
+      return HttpResponseRedirect(reverse('article-detail', args=[str(pk)]))
 
-def UnLikeView(request, pk):
-      post  = get_object_or_404(Post, id = request.POST.get('post_id'))
-      post.unlikes.add(request.user)
-      return HttpResponseRedirect(reverse('article_detail', args=[str(pk)]))
 
 class HomeView(ListView):
 	model = Post

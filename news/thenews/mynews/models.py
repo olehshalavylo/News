@@ -23,7 +23,7 @@ class Post(models.Model):
 	body = RichTextField(blank=True, null=True)
 	# body = models.TextField()
 	post_date = models.DateField(auto_now_add=True)
-	#likes = models.ManyToManyField(User, related_name='blog_posts')
+	Likes = models.ManyToManyField(User, related_name='blog_posts')
 	# unlikes = models.ManyToManyField(User, related_name='blog_posts')
 	
 
@@ -34,4 +34,13 @@ class Post(models.Model):
 		#return reverse('article-detail', args=(str(self.id)))
 		return reverse('home')
 
-		
+
+# class Comment(models.Model):
+# 	 post = models.ForeingKey(Post, related_name="comments", on_delete = models.CASCADE)
+# 	 name = models.CharField(max_lenght=255)
+# 	 body = models.TextField()
+# 	 date_added = model.DateTimeField(auto_now_add=True)
+
+# 	 def __str__(self):
+# 	 	return '%s - %s' % (self.post.title(), self.name)
+			
