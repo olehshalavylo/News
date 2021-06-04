@@ -7,7 +7,8 @@
 
 <ul>
 {% for post in object_list %}
-	<li> <a href="{% url 'article-detail' post.pk %}"> {{ post.title }} </a> - {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.post_date }} - <small>
+	<li> <a href="{% url 'article-detail' post.pk %}"> {{ post.title }} </a> - <a href="{% url 'category' post.category %}">{{ post.category }}</a>,  {{ post.author.first_name }} {{ post.author.last_name }},  {{ post.post_date }} - <small>
+		<!-- |slugify -->
 
 		{% if user.is_authenticated %}
 
@@ -21,6 +22,5 @@
 	{{ post.body|safe }} </li>
 {% endfor %}
 </ul>
-
 
 {% endblock %}
