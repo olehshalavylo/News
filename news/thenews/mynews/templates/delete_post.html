@@ -3,18 +3,49 @@
 {% block content %}
 
 
-<h1> Delete Post </h1>
-<br/><br/>
-<h3> Delete: {{ post.title }} </h3>
+{% if user.is_authenticated %}
 
 
-</br>
-<div class="form-group">
-<form method="POST">
-	{% csrf_token %}
-	<strong> Confirm Deleting Of Post </strong> </br> </br>
-	<button class="btn btn-secondary"> Delete Post </button>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div class="card" style="width: 100%;">
+				<div class="card-body shadow">
+				<h5 class="card-title">Delete Post</h5>
+				<p class="card-text">
+					<h3> Delete: {{ post.title }} </h3>
+					</br>
+					<div class="form-group">
+					<form method="POST">
+						{% csrf_token %}
+						<strong> Confirm Deleting Of Post </strong> </br> </br>
+						<button class="btn btn-primary"> Delete Post </button>
+					</div>
+				</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
+
+	<!-- <h1> Delete Post </h1>
+	<br/><br/>
+	<h3> Delete: {{ post.title }} </h3>
+
+
+	</br>
+	<div class="form-group">
+	<form method="POST">
+		{% csrf_token %}
+		<strong> Confirm Deleting Of Post </strong> </br> </br>
+		<button class="btn btn-secondary"> Delete Post </button>
+	</div> -->
+
+{% else %}
+
+Please login before deleting
+
+{% endif %}
 
 {% endblock %}

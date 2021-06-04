@@ -3,20 +3,30 @@
 {% block content %}
 
 
-<h1> Post </h1>
+<h1> Posts </h1>
 
-<ul>
+<!-- <ul> -->
 {% for post in object_list %}
-	<li> <a href="{% url 'article-detail' post.pk %}"> {{ post.title }} </a> - {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.post_date }} - <small>
 
-		<a href="{% url 'update_post' post.pk %}"> Edit </a>
-
-		<a href="{% url 'delete_post' post.pk %}"> Delete </a>
-
-	</small> <br/>
-	{{ post.body }} </li>
+<div class="container" style="margin-bottom: 2%;">
+	<div class="row">
+		<div class="col" style="margin-left: auto; margin-right: auto;">
+			<div class="card" style="width: 65%; margin-left: auto; margin-right: auto;">
+				<div class="card-body">
+				<h5 class="card-title"><a href="{% url 'article-detail' post.pk %}"> {{ post.title }} </a> - {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.post_date }}</h5>
+				
+				<p class="card-text">{{ post.body|safe }}</p>
+				
+				<a href="{% url 'update_post' post.pk %}" class="btn btn-primary">Edit</a>
+				<a href="{% url 'delete_post' post.pk %}" class="btn btn-primary">Delete</a>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endfor %}
-</ul>
-
-
 {% endblock %}
+
+
+

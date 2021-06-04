@@ -3,15 +3,43 @@
 {% block content %}
 
 
-<h1> Add Post </h1>
-<br/><br/>
+{% if user.is_authenticated %}
 
-<div class="form-group">
-<form method="POST">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button class="btn btn-secondary"> Post </button>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div class="card shadow " style="width: 100%;">
+				<div class="card-body">
+				<h5 class="card-title"> Add Post </h5>
+				<p class="card-text"><div class="form-group">
+					<form method="POST">
+						{% csrf_token %}
+						{{ form.media }}
+						{{ form.as_p }}
+						<button class="btn btn-primary"> Post </button>
+					</div></p>
+	<!-- <br/><br/> -->
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
+	<!-- <h1> Add Post </h1>
+	<br/><br/>
+
+	<div class="form-group">
+	<form method="POST">
+		{% csrf_token %}
+		{{ form.media }}
+		{{ form.as_p }}
+		<button class="btn btn-secondary"> Post </button>
+	</div> -->
+
+{% else %}
+
+Please login before adding
+
+{% endif %}
 
 {% endblock %}

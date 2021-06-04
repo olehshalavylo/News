@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} Edit Profile {% endblock %}
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div class="card" style="width: 100%;">
+				<div class="card-body shadow">
+				<h5 class="card-title">Edit Profile</h5>
+				<p class="card-text">
+					<div class="form-group">
+						<form method="POST">
+							{% csrf_token %}
+							{{ form.as_p }}
+							<button class="btn btn-primary"> Apply </button>
+						</div> 
+						
+				</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- <h1> Edit Profile </h1>
+<br/><br/>
+
+<div class="form-group">
+<form method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button class="btn btn-secondary"> Apply </button>
+</div> -->
+
+
+{% endblock %}

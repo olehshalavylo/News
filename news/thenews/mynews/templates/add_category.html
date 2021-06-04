@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} Create A News Category {% endblock %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div class="card" style="width: 100%;">
+				<div class="card-body shadow">
+				<h5 class="card-title">Add category</h5>
+				<p class="card-text"><div class="form-group ">
+					<form method="POST">
+						{% csrf_token %}
+						{{ form.as_p }}
+						<button class="btn btn-primary"> Add Category </button>
+					</div></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<!-- <h1> Add Category </h1>
+	<br/><br/>
+
+	<div class="form-group">
+	<form method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class="btn btn-secondary"> Add Category </button>
+	</div> -->
+
+{% else %}
+
+Please login before adding
+
+{% endif %}
+
+{% endblock %}

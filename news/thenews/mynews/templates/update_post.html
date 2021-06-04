@@ -2,16 +2,44 @@
 {% block title %} Edit News Post {% endblock %}
 {% block content %}
 
+{% if user.is_authenticated %}
 
-<h1> Update Post </h1>
-<br/><br/>
-
-<div class="form-group">
-<form method="POST">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button class="btn btn-secondary"> Update </button>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div class="card" style="width: 100%;">
+				<div class="card-body shadow">
+					<h5 class="card-title">Update Post</h5>
+					<p class="card-text">
+						<div class="form-group">
+							<form method="POST">
+								{% csrf_token %}
+								{{ form.media }}
+								{{ form.as_p }}
+								<button class="btn btn-primary"> Update </button>
+							</div>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
+	<!-- <h1> Update Post </h1>
+	<br/><br/>
+
+	<div class="form-group">
+	<form method="POST">
+		{% csrf_token %}
+		{{ form.media }}
+		{{ form.as_p }}
+		<button class="btn btn-secondary"> Update </button>
+	</div> -->
+
+{% else %}
+
+Please login before editing
+
+{% endif %}
 
 {% endblock %}
