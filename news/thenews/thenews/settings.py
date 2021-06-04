@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mynews',
     'members',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
